@@ -17,4 +17,4 @@ class Diller(models.Model):
     airport = models.CharField(_('Airport'), blank=True, max_length=255)
 
     def __str__(self):
-        return self.name
+        return 'Diller: %s, Products %s' % (self.name, self.product_dillers.values_list('pk', flat=True))
