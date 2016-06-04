@@ -27,6 +27,7 @@ class Diller(models.Model):
                                      db_table='diller_addresses')
     rating = models.CharField(max_length=20, choices=RATING_CHOICES, default='1')
     airport = models.CharField(_('Airport'), blank=True, max_length=255)
+    image = models.ImageField(upload_to="event_image", blank=True, )
 
     def __str__(self):
         return 'Diller: %s, Products %s' % (self.name, self.product_dillers.values_list('pk', flat=True))
