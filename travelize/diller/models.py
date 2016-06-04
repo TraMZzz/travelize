@@ -10,10 +10,22 @@ from travelize.address.models import Address
 
 @python_2_unicode_compatible
 class Diller(models.Model):
+    RATING_CHOICES = (
+        ('1', '1'),
+        ('2', '2'),
+        ('3', '3'),
+        ('4', '4'),
+        ('5', '5'),
+        ('6', '6'),
+        ('7', '7'),
+        ('8', '8'),
+        ('9', '9'),
+        ('10', '10'))
     name = models.CharField(_('Name of User'), max_length=255)
     phone = models.CharField(_('Phone'), max_length=255)
     address = models.ManyToManyField(Address, _('addresses'),
                                      db_table='diller_addresses')
+    rating = models.CharField(max_length=20, choices=RATING_CHOICES, default='1')
     airport = models.CharField(_('Airport'), blank=True, max_length=255)
 
     def __str__(self):
