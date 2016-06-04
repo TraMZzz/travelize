@@ -10,3 +10,6 @@ class Address(models.Model):
     location = models.PointField(max_length=40)
 
     objects = models.GeoManager()
+
+    def __str__(self):
+        return 'Point: %s' % self.location

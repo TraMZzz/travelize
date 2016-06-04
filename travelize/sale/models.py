@@ -11,10 +11,10 @@ from travelize.product.models import Product
 
 @python_2_unicode_compatible
 class Sale(models.Model):
-    user = models.ForeignKey(User, verbose_name=_('User'),
-                             related_name='users')
-    product = models.ForeignKey(Product, verbose_name=_('Product'),
-                                related_name='product')
+    user = models.ForeignKey(User, verbose_name=_('Sale user'),
+                             related_name='sale_users')
+    product = models.ForeignKey(Product, verbose_name=_('Sale product'),
+                                related_name='sale_product')
     amount = models.PositiveIntegerField(_('amount'))
 
     def __str__(self):

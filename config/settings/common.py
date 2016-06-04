@@ -39,11 +39,16 @@ THIRD_PARTY_APPS = (
     'allauth',  # registration
     'allauth.account',  # registration
     'allauth.socialaccount',  # registration
+    'django.contrib.gis',
 )
 
 # Apps specific for this project go here.
 LOCAL_APPS = (
     'travelize.users',  # custom users app
+    'travelize.address',
+    'travelize.diller',
+    'travelize.sale',
+    'travelize.product',
     # Your stuff: custom apps go here
 )
 
@@ -99,7 +104,7 @@ MANAGERS = ADMINS
 # See: https://docs.djangoproject.com/en/dev/ref/settings/#databases
 DATABASES = {
     # Raises ImproperlyConfigured exception if DATABASE_URL not in os.environ
-    'default': env.db('DATABASE_URL', default='postgres:///travelize'),
+    'default': env.db('DATABASE_URL', default='postgis:///travelize'),
 }
 DATABASES['default']['ATOMIC_REQUESTS'] = True
 

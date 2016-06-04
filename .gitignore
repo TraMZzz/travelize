@@ -62,3 +62,4 @@ travelize/media/
 # Hitch directory
 tests/.hitch
 
+/staticfiles/

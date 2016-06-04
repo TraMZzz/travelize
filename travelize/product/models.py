@@ -10,11 +10,11 @@ from travelize.diller.models import Diller
 
 @python_2_unicode_compatible
 class Product(models.Model):
-    name = models.CharField(_('Name of User'), max_length=255),
-    price = models.PositiveIntegerField(_('Price')),
+    product_name = models.CharField(_('Name of Product'), max_length=255)
+    price = models.PositiveIntegerField(_('Price'))
     quantity = models.PositiveIntegerField(_('Quantity'))
-    diller = models.ForeignKey(Diller, verbose_name=_('Diller'),
-                               related_name='dillers')
+    diller = models.ForeignKey(Diller, verbose_name=_('Product diller'),
+                               related_name='product_dillers')
 
     def __str__(self):
-        return self.name
+        return self.product_name
