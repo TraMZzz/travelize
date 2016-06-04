@@ -8,7 +8,7 @@
 # - Add django-extensions as app
 # """
 
-# from .common import *  # noqa
+from .common import *  # noqa
 
 # # DEBUG
 # # ------------------------------------------------------------------------------
@@ -19,7 +19,7 @@
 # # ------------------------------------------------------------------------------
 # # See: https://docs.djangoproject.com/en/dev/ref/settings/#secret-key
 # # Note: This key only used for development and testing.
-# SECRET_KEY = env('DJANGO_SECRET_KEY', default='mfqez=xl=xcu^m-*_ad*zfmg932n!ko&-cw9wy@@)d61o&k82z')
+SECRET_KEY = env('DJANGO_SECRET_KEY', default='mfqez=xl=xcu^m-*_ad*zfmg932n!ko&-cw9wy@@)d61o&k82z')
 
 # # Mail settings
 # # ------------------------------------------------------------------------------
