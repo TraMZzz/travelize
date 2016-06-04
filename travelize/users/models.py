@@ -9,8 +9,10 @@ from django.utils.translation import ugettext_lazy as _
 
 @python_2_unicode_compatible
 class User(AbstractUser):
-    name = models.CharField(_('Name of User'), max_length=255)
-    phone = models.CharField(_('Phone'), max_length=255)
+    name = models.CharField(_('Name of User'), blank=True, max_length=255)
+    phone = models.CharField(_('Phone'), blank=True, max_length=255)
+    chat_id = models.CharField(_('Chat Id'), blank=True, max_length=255)
+    message_id = models.CharField(_('Message Id'), blank=True, max_length=255)
 
     def __str__(self):
         return self.username
