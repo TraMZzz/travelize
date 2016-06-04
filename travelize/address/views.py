@@ -3,6 +3,7 @@ from __future__ import absolute_import, unicode_literals
 import json
 
 from django.contrib.gis.geos import GEOSGeometry
+from django.conf import settings
 
 from rest_framework.response import Response
 from rest_framework import (
@@ -63,7 +64,8 @@ class AddressViewSet(viewsets.GenericViewSet):
                                    'product': product.product_name,
                                    'name': diller.name,
                                    'phone': diller.phone,
-                                   'ticket_price': air_price}
+                                   'ticket_price': air_price,
+                                   'image_url': 'http://188.226.182.203:4567'+settings.MEDIA_URL + diller.image.name}
                 count += 1
         print data
         return Response(status=200, data=data)
