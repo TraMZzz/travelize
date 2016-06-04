@@ -27,6 +27,8 @@ def get_latest_prices(from_airport, to_airport, depart_date, return_date, PAYOUT
     data = data.read()
     data = json.loads(data)
 
+    print data, '!@@@@@@@@@@@'
+
     return str(random.randint(0, 300))
 
 
@@ -52,9 +54,8 @@ class AddressViewSet(viewsets.GenericViewSet):
         data = {}
         count = 0
         for address in all_address:
-            dillers = address.addresses.all().order_by('product_dillers__price')[:1]
-            if dillers:
-                diller = dillers[0]
+            dillers = address.addresses.all().order_by('product_dillers__price')[:5]
+            for diller in dillers:
                 air_price = get_latest_prices(from_airport, diller.airport, depart_date, return_date, PAYOUTS_TOKEN)
                 product = diller.product_dillers.all().order_by('price')[0]
                 data[count] = {'location': address.location.tuple,
@@ -64,4 +65,5 @@ class AddressViewSet(viewsets.GenericViewSet):
                                    'phone': diller.phone,
                                    'ticket_price': air_price}
                 count += 1
+        print data
         return Response(status=200, data=data)
