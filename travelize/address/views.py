@@ -43,8 +43,8 @@ class AddressViewSet(viewsets.GenericViewSet):
     def list(self, request, jsonlatlng):
         lat, lang = jsonlatlng.split(',')
         from_airport = get_closest_airport(lat, lang, AERO_TOKEN)  # 'LWO'
-        depart_date = datetime.now().strftime('%Y-%m-%d')
-        return_date = (datetime.now() + timedelta(days=2)).strftime('%Y-%m-%d')
+        depart_date = datetime.now().strftime('%Y-%m')
+        return_date = (datetime.now() + timedelta(days=2)).strftime('%Y-%m')
 
         point = GEOSGeometry('{ "type": "Point", "coordinates": ['+jsonlatlng+']}')
         all_address = Address.objects.distance(point).order_by('distance')[:5]
