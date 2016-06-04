@@ -17,4 +17,4 @@ class Product(models.Model):
                                related_name='product_dillers')
 
     def __str__(self):
-        return self.product_name
+        return 'Product %s, diller %s' % (self.product_name, self.diller.name)

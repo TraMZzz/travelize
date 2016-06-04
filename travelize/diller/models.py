@@ -14,6 +14,7 @@ class Diller(models.Model):
     phone = models.CharField(_('Phone'), max_length=255)
     address = models.ManyToManyField(Address, _('addresses'),
                                      db_table='diller_addresses')
+    airport = models.CharField(_('Airport'), blank=True, max_length=255)
 
     def __str__(self):
         return self.name
