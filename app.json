@@ -1,6 +1,6 @@
 {
-  "name": "go_green",
-  "description": "GO",
+  "name": "travelize",
+  "description": "travelize",
   "env": {
     "BUILDPACK_URL": "https://github.com/heroku/heroku-buildpack-python",
     "DJANGO_SETTINGS_MODULE": "config.settings.production",
