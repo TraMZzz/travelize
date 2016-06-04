@@ -21,7 +21,7 @@ PAYOUTS_TOKEN = '64f4f34d117155576c02558168b0f5c1'
 
 
 def get_latest_prices(from_airport, to_airport, depart_date, return_date, PAYOUTS_TOKEN):
-    url = 'http://api.travelpayouts.com/v1/prices/cheap?origin=%s&destination=%s&depart_date=%s&return_date=%s&token=%s' % (from_airport, to_airport, depart_date, return_date, PAYOUTS_TOKEN)
+    url = 'http://api.travelpayouts.com/v1/prices/cheap?currency=USD&origin=%s&destination=%s&depart_date=%s&return_date=%s&token=%s' % (from_airport, to_airport, depart_date, return_date, PAYOUTS_TOKEN)
     data = urllib2.urlopen(url)
     data = data.read()
     data = json.loads(data)
