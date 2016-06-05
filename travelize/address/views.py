@@ -33,7 +33,7 @@ def get_latest_prices(from_airport, to_airport, depart_date, return_date, PAYOUT
     return str(random.randint(0, 300))
 
 
-def get_closest_airport(lat, lang, AERO_TOKEN):
+def get_closest_airport(lang, lat, AERO_TOKEN):
     url = "https://airport.api.aero/airport/nearest/%s/%s?user_key=%s" % (lat, lang, AERO_TOKEN)
     data = urllib2.urlopen(url)
     data = data.read()
@@ -46,7 +46,7 @@ class AddressViewSet(viewsets.GenericViewSet):
 
     def list(self, request, jsonlatlng):
         lat, lang = jsonlatlng.split(',')
-        from_airport = get_closest_airport(lat, lang, AERO_TOKEN)  # 'LWO'
+        from_airport = get_closest_airport(lang, lat, AERO_TOKEN)  # 'LWO'
         depart_date = datetime.now().strftime('%Y-%m')
         return_date = (datetime.now() + timedelta(days=2)).strftime('%Y-%m')
 
