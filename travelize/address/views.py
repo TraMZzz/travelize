@@ -55,8 +55,9 @@ class AddressViewSet(viewsets.GenericViewSet):
         data = {}
         count = 0
         for address in all_address:
-            dillers = address.addresses.all().order_by('product_dillers__price')[:5]
-            for diller in dillers:
+            dillers = address.addresses.all().order_by('product_dillers__price')[:1]
+            if dillers:
+                diller = dillers[0]
                 air_price = get_latest_prices(from_airport, diller.airport, depart_date, return_date, PAYOUTS_TOKEN)
                 product = diller.product_dillers.all().order_by('price')[0]
                 data[count] = {'location': address.location.tuple,
@@ -66,6 +67,6 @@ class AddressViewSet(viewsets.GenericViewSet):
                                    'phone': diller.phone,
                                    'ticket_price': air_price,
                                    'image_url': 'http://188.226.182.203:4567'+settings.MEDIA_URL + diller.image.name}
-                count += 1
+            count += 1
         print data
         return Response(status=200, data=data)
