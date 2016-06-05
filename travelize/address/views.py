@@ -39,7 +39,6 @@ def get_closest_airport(lang, lat, AERO_TOKEN):
     data = data.read()
     data = data[9:-1]
     data = json.loads(data)
-    print data['airports']['name'], '!!!!!!!'
     return data['airports'][0]['code'], data['airports'][0]['name']
 
 
