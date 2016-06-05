@@ -39,14 +39,15 @@ def get_closest_airport(lang, lat, AERO_TOKEN):
     data = data.read()
     data = data[9:-1]
     data = json.loads(data)
-    return data['airports'][0]['code']
+    print data['airports']['name'], '!!!!!!!'
+    return data['airports'][0]['code'], data['airports']['name']
 
 
 class AddressViewSet(viewsets.GenericViewSet):
 
     def list(self, request, jsonlatlng):
         lat, lang = jsonlatlng.split(',')
-        from_airport = get_closest_airport(lang, lat, AERO_TOKEN)  # 'LWO'
+        from_airport, air_name = get_closest_airport(lang, lat, AERO_TOKEN)  # 'LWO'
         depart_date = datetime.now().strftime('%Y-%m')
         return_date = (datetime.now() + timedelta(days=2)).strftime('%Y-%m')
 
@@ -68,7 +69,8 @@ class AddressViewSet(viewsets.GenericViewSet):
                                    'ticket_price': air_price,
                                    'image_url': 'http://188.226.182.203:4567'+settings.MEDIA_URL + diller.image.name,
                                    'airpot_to': diller.airport,
-                                   'from_airport': from_airport}
+                                   'from_airport': from_airport,
+                                   'air_name': air_name}
             count += 1
         print data
         return Response(status=200, data=data)
