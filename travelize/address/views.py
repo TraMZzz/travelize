@@ -66,7 +66,9 @@ class AddressViewSet(viewsets.GenericViewSet):
                                    'name': diller.name,
                                    'phone': diller.phone,
                                    'ticket_price': air_price,
-                                   'image_url': 'http://188.226.182.203:4567'+settings.MEDIA_URL + diller.image.name}
+                                   'image_url': 'http://188.226.182.203:4567'+settings.MEDIA_URL + diller.image.name,
+                                   'airpot_to': diller.airport,
+                                   'from_airport': from_airport}
             count += 1
         print data
         return Response(status=200, data=data)
